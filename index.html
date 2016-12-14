@@ -1,0 +1,52 @@
+<html ng-app="app">
+<head>
+<base href="/">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body style="padding-top: 50px">
+
+	<div ng-include="'partials/user_partial.html'"></div>
+	<div ng-controller="AlbumListCtrl">	
+		<p><input placeholder="Type of search..." type="text" ng-model="searchFor" size="30"></p>
+		<p>
+			There are {{albums.length }} albums available to view:
+		</p>
+
+			<ng-view></ng-view>
+		
+			<h3>Add New Album</h3>
+
+			<form name="add_album_form" novalidate="">
+				<div class="album panel panel-default">
+					<div class="panel-heading">
+						<div class="alert alert-danger" ng-show="add_album_error">{{add_album_error}}</div>
+						<div style="float: right;">
+							<input name="date" ng-required="true" ng-minlength="10" type="text" placeholder="dd/mm/yyyy" size="10" ng-model="add_album.date" />
+						</div>
+							<input type="text" placeholder="Title..." size="20" ng-model="add_album.title" />									
+					</div>
+
+					<div class="description">
+						<p>
+							<textarea ng-model="add_album.description" placeholder="Description..." rows="4" style="width: 100%"></textarea>
+						</p>
+						<p>
+							<input type="text" placeholder="..." size="20" ng-model="add_album.name" />										
+						</p>
+						<p>
+							<button ng-click="addAlbum(add_album)" type="button" class="btn btn-success">Add New Button</button>
+						</p>
+					</div>
+				</div>
+			</form>
+
+	</div>
+<script type='text/javascript' src="js/angular.min.js"></script>
+<script type='text/javascript' src="js/angular-route.js"></script>
+<script type='text/javascript' src="js/angular-file-upload.js"></script>
+<script type='text/javascript' src="js/jquery.min.js"></script>
+<script type='text/javascript' src="js/bootstrap.min.js"></script>
+<script type='text/javascript' src="js/script.js"></script>
+</body>
+</html>
